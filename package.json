@@ -1,6 +1,6 @@
 {
   "name": "epos-print-xml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package to produce the xml needed for Epson Server Direct Print",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -18,7 +18,11 @@
     "type": "git",
     "url": "git+https://github.com/monishth/epos-print-xml.git"
   },
-  "keywords": ["epson", "epos", "print"],
+  "keywords": [
+    "epson",
+    "epos",
+    "print"
+  ],
   "author": "monishth",
   "license": "ISC",
   "bugs": {
@@ -34,5 +38,7 @@
     "prettier": "^2.4.1",
     "typescript": "^4.5.2"
   },
-  "files": ["lib/**/*"]
+  "files": [
+    "lib/**/*"
+  ]
 }
