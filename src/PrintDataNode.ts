@@ -1,3 +1,21 @@
+export const sanitise = (xmlString: string) =>
+  xmlString.replace(/[<>&'"]/g, (unsafeString) => {
+    switch (unsafeString) {
+      case '<':
+        return '&lt;'
+      case '>':
+        return '&gt;'
+      case '&':
+        return '&amp;'
+      case "'":
+        return '&apos;'
+      case '"':
+        return '&quot;'
+      default:
+        return unsafeString
+    }
+  })
+
 export class PrintDataNode {
   private tagName: string
   public children: PrintDataNode[]
@@ -12,8 +30,7 @@ export class PrintDataNode {
   }
 
   public xml(rootNode = false): string {
-    return (
-      (rootNode ? `<?xml version="1.0" encoding="utf-8"?>` : '') +
+    const nodeXml =
       `<${this.tagName}` +
       (Object.keys(this.att).length > 0
         ? ` ${Object.entries(this.att)
@@ -24,9 +41,9 @@ export class PrintDataNode {
             .join(' ')}`
         : '') +
       (this.children.length !== 0 || this.text
-        ? '>' + this.text + this.children.map((child) => child.xml()).join('') + `</${this.tagName}>`
+        ? '>' + sanitise(this.text) + this.children.map((child) => child.xml()).join('') + `</${this.tagName}>`
         : '/>')
-    )
+    return rootNode ? `<?xml version="1.0" encoding="utf-8"?> ${nodeXml}` : nodeXml
   }
 }
 
