@@ -1,0 +1,38 @@
+{
+  "name": "epos-print-xml",
+  "version": "1.0.0",
+  "description": "A package to produce the xml needed for Epson Server Direct Print",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monishth/epos-print-xml.git"
+  },
+  "keywords": ["epson", "epos", "print"],
+  "author": "monishth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monishth/epos-print-xml/issues"
+  },
+  "homepage": "https://github.com/monishth/epos-print-xml#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.5.2"
+  },
+  "files": ["lib/**/*"]
+}
